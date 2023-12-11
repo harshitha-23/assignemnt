@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div style="background-color:#F0FFFF">
+
+    <div class="row py-2" style="background-color: #5F9EA0;">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h2 class="text-center">Canvas Designing</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="d-flex justify-content-start">
+                <button class="btn btn-success m-1" id="undo_update">Undo</button>
+                <button class="btn btn-danger m-1" id="redo_update">Redo</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 border-section">
+
+            <div class="card m-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h4 class="text-center">Add Text Here</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-ms-12 col-sm-12 col-12"></div>
+                        <div class="col-xl-5 col-lg-5 col-md-10 col-sm-10 col-10">
+                            <div class="col">
+                                <input type="text" id="text_input" class="mt-2" style="width: 95%;" />
+                            </div>
+                        </div>
+                        <div class="col-xl-1 col-lg-1 col-md-2 col-sm-10 col-2">
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-primary m-1" id="submit_button">Submit</button>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12"></div>
+                    </div>
+
+                    <div class="row mt-4 mb-2">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h5 class="text-center">List of added Content</h5>
+                            <div class="row my-2" id="addingContent">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div id="append_text_content">
+                                        <p class="text-center cursor-pointer" id="text_content"> Harshitha  </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 border-section" id="canvas_editing">
+            <div class="row mt-4">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h4 class="text-center">Edit Your Text here</h4>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    <div class="text-center">Content Name : <span id="edit_content_name"></span></div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="mt-2 mx-2">Select Font Style : </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="">
+                        <select class="form-select" id="update_style">
+                            <option class="">Select Any One Style</option>
+                            <option value="italic">italic</option>
+                            <option value="normal">normal</option>
+                            <option value="oblique">oblique</option>
+                            <option value="calc()">calc</option>
+                            <option value="inherit">inherit</option>
+                            <option value="initial">initial</option>
+                            <option value="unset">unset</option>
+                            <option value="var()">var</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+            </div>
+            <div class="row my-2">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="mt-2 mx-2">Select Font Size : </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="">
+                        <select class="form-select" id="update_size">
+                            <option class="">Select Any One Size</option>
+                            <option value="10">10 px</option>
+                            <option value="11">11 px</option>
+                            <option value="12">14 px</option>
+                            <option value="13">13 px</option>
+                            <option value="14">14 px</option>
+                            <option value="15">15 px</option>
+                            <option value="16">16 px</option>
+                            <option value="17">17 px</option>
+                            <option value="18">18 px</option>
+                            <option value="19">19 px</option>
+                            <option value="20">20 px</option>
+                            <option value="21">21 px</option>
+                            <option value="22">22 px</option>
+                            <option value="23">23 px</option>
+                            <option value="24">24 px</option>
+                            <option value="25">25 px</option>
+                            <option value="26">26 px</option>
+                            <option value="27">27 px</option>
+                            <option value="28">28 px</option>
+                            <option value="29">29 px</option>
+                            <option value="30">30 px</option>
+                            <option value="31">31 px</option>
+                            <option value="32">32 px</option>
+                            <option value="33">33 px</option>
+                            <option value="34">34 px</option>
+                            <option value="35">35 px</option>
+                            <option value="36">36 px</option>
+                            <option value="37">37 px</option>
+                            <option value="38">38 px</option>
+                            <option value="39">39 px</option>
+                            <option value="40">40 px</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+            </div>
+            <div class="row my-3">
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="mt-2 mx-2">Select Font Color : </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="">
+                        <select class="form-select" id="update_color">
+                            <option class="">Select Any One Color</option>
+                            <option value="blue">blue</option>
+                            <option value="green">green</option>
+                            <option value="red">red</option>
+                            <option value="yellow">yellow</option>
+                            <option value="black">black</option>
+                            <option value="brown">brown</option>
+                            <option value="chocolate">chocolate</option>
+                            <option value="grey">grey</option>
+                            <option value="tomato">tomato</option>
+                            <option value="pink">pink</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12"></div>
+            </div>
+            <div class="row my-3">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="mt-2">Want to Replace instead of <b><span id="replace_text"></span></b> : </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="">
+                        <input type="text" class="mt-2" id="replaced_text" />
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary" id="update_details">Update Your Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var submitButton = document.getElementById("submit_button");
+    submitButton.addEventListener("click", function () {
+        var userInput = document.getElementById("text_input").value.trim();
+        if (userInput !== "") {
+            var newParagraph = document.createElement("p");
+            newParagraph.textContent = userInput;
+            var appendTextContent = document.getElementById("append_text_content");
+            appendTextContent.appendChild(newParagraph);
+            document.getElementById("text_input").value = "";
+            // Enable undo and redo buttons after submitting
+            enableUndoRedoButtons();
+        } else {
+            alert("Please enter some text before submitting.");
+        }
+    });
+
+    // Your other JavaScript code here
+
+    function enableUndoRedoButtons() {
+        var undoButton = document.getElementById("undo_update");
+        var redoButton = document.getElementById("redo_update");
+        undoButton.disabled = false;
+        redoButton.disabled = false;
+    }
+</script>
+
+</body>
+</html>
